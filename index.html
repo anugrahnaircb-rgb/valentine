@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  text-align:center;
+  background:#ffe6ee;
+  font-family:Arial, sans-serif;
+  padding-top:80px;
+}
+h1 {
+  font-size:28px;
+}
+button {
+  background:#ff4d6d;
+  color:white;
+  padding:15px 30px;
+  border:none;
+  font-size:20px;
+  border-radius:10px;
+  cursor:pointer;
+  margin-top:20px;
+}
+button:hover {
+  background:#e63950;
+}
+#msg {
+  font-size:22px;
+  margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<h1>Isha, will you be my Valentine? 💖</h1>
+
+<button onclick="yes()">YES 💕</button>
+
+<p id="msg"></p>
+
+<script>
+function yes(){
+  document.getElementById("msg").innerHTML =
+  "Yayyy 💖 You just made me the happiest person!";
+}
+</script>
+
+</body>
+</html>
