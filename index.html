@@ -1,49 +1,121 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Valentine 💖</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine? 💖</title>
+
 <style>
-body {
-  text-align:center;
-  background:#ffe6ee;
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff758c,#ffb199);
   font-family:Arial, sans-serif;
-  padding-top:80px;
+  overflow:hidden;
 }
-h1 {
-  font-size:28px;
+
+.card{
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+  text-align:center;
+  max-width:350px;
 }
-button {
+
+h1{
+  margin-bottom:25px;
+}
+
+button{
+  padding:15px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  margin:10px;
+  transition:0.3s ease;
+}
+
+#yesBtn{
   background:#ff4d6d;
   color:white;
-  padding:15px 30px;
-  border:none;
+}
+
+#yesBtn:hover{
+  transform:scale(1.1);
+}
+
+#noBtn{
+  background:#888;
+  color:white;
+}
+
+#message{
+  margin-top:20px;
   font-size:20px;
-  border-radius:10px;
-  cursor:pointer;
-  margin-top:20px;
+  color:#ff4d6d;
+  font-weight:bold;
 }
-button:hover {
-  background:#e63950;
-}
-#msg {
+
+.heart{
+  position:absolute;
   font-size:22px;
-  margin-top:20px;
+  animation:float 5s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
 }
 </style>
 </head>
+
 <body>
 
-<h1>Isha, will you be my Valentine? 💖</h1>
+<div class="card">
+  <h1>Will you be my Valentine? 💖</h1>
 
-<button onclick="yes()">YES 💕</button>
+  <button id="yesBtn" onclick="yesClick()">YES 💕</button>
+  <button id="noBtn" onclick="shrinkNo()">NO 😜</button>
 
-<p id="msg"></p>
+  <div id="message"></div>
+</div>
+
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-function yes(){
-  document.getElementById("msg").innerHTML =
-  "Yayyy 💖 You just made me the happiest person!";
+let size = 18;
+
+function yesClick(){
+  document.getElementById("message").innerHTML =
+  "Yayyy 💖 You just made me the happiest person alive!";
+  
+  document.getElementById("music").play();
+  createHearts();
+}
+
+function shrinkNo(){
+  size -= 3;
+  if(size <= 6){
+    document.getElementById("noBtn").style.display="none";
+  }
+  document.getElementById("noBtn").style.fontSize = size + "px";
+}
+
+function createHearts(){
+  for(let i=0;i<25;i++){
+    let heart=document.createElement("div");
+    heart.innerHTML="💖";
+    heart.className="heart";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(heart);
+  }
 }
 </script>
 
